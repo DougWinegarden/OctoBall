@@ -11,7 +11,7 @@ public class BallScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(Vector3.down * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.up * Time.deltaTime, Space.World);
 
         if(transform.position.y < -10)
         {
