@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MouthScript : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+    public GameObject Stars;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -14,12 +14,13 @@ public class MouthScript : MonoBehaviour {
 		
 	}
 
-        void OnCollisionStay(Collision other)
+    void OnCollisionStay(Collision other)
     {
-        Debug.Log(other.gameObject);
+        //Debug.Log(other.gameObject);
 
         if (other.collider.transform.GetComponent<BallScript>())
         {
+            Stars.SetActive(true);
             //other.collider.transform.localScale.x -= 0.01;
             //other.collider.transform.localScale.z -= 0.01;
 
@@ -34,6 +35,14 @@ public class MouthScript : MonoBehaviour {
         if(other.collider.transform.localScale.x < 0.2)
         {
             Destroy(other.collider.gameObject);
+            print("add points");
         }
+    }
+
+    void OnCollisionExit()
+    {
+        Stars.SetActive(false);
+        //print(gameObject.name + " and " + collisionInfo.collider.name + " are no longer colliding");
+
     }
 }
